@@ -1,0 +1,11 @@
+framework module NetaloSDK {
+  umbrella header "NetaloSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module NetaloSDK.Swift {
+    header "NetaloSDK-Swift.h"
+    requires objc
+}
