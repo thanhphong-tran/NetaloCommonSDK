@@ -346,13 +346,13 @@ SWIFT_CLASS("_TtC11NetaloUISDK15ChatContainerVC")
 
 
 
-
 @class UIDocumentPickerViewController;
 
 @interface ChatContainerVC (SWIFT_EXTENSION(NetaloUISDK)) <UIDocumentPickerDelegate>
 - (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentsAtURLs:(NSArray<NSURL *> * _Nonnull)urls;
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController * _Nonnull)controller;
 @end
+
 
 
 
@@ -606,10 +606,40 @@ SWIFT_CLASS("_TtC11NetaloUISDK15NTDropDownAlert")
 
 
 
+SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
+@protocol NetaloUIDelegate
+- (void)sessionExpired;
+- (void)userDidLogout;
+- (void)presentWithViewController:(UIViewController * _Nonnull)viewController;
+- (void)pushWithViewController:(UIViewController * _Nonnull)viewController;
+- (void)openContact;
+- (void)switchToMainScreen;
+- (UIViewController * _Nullable)topMostViewController SWIFT_WARN_UNUSED_RESULT;
+- (UIViewController * _Nullable)getContactViewController SWIFT_WARN_UNUSED_RESULT;
+- (void)updateStatusBarWithStyle:(UIStatusBarStyle)style;
+- (void)updateThemeColor:(NSInteger)themeColor;
+@end
+
+@protocol NetaloUser;
+
 SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 @interface NetaloUISDK : NSObject
+- (void)setTheme:(NSInteger)themeType;
++ (id <NetaloUser> _Nullable)authorizedUser SWIFT_WARN_UNUSED_RESULT;
+- (void)addWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
+- (UIViewController * _Nonnull)buildConversationViewController SWIFT_WARN_UNUSED_RESULT;
+- (UIViewController * _Nonnull)buildHistoryCallViewController SWIFT_WARN_UNUSED_RESULT;
+- (UIViewController * _Nonnull)buildContactViewController SWIFT_WARN_UNUSED_RESULT;
+- (UIViewController * _Nonnull)buildProfileViewController SWIFT_WARN_UNUSED_RESULT;
+- (UIViewController * _Nonnull)buildChatViewController:(id <NetaloUser> _Nonnull)netaloUser type:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
+- (void)setWithUser:(id <NetaloUser> _Nonnull)user;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+@interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession;
 @end
 
 @class UNUserNotificationCenter;
@@ -637,6 +667,17 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (UIInterfaceOrientationMask)application:(UIApplication * _Nonnull)application supportedInterfaceOrientationsForWindow:(UIWindow * _Nullable)window SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)application:(UIApplication * _Nonnull)app openURL:(NSURL * _Nonnull)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)application:(UIApplication * _Nonnull)application openURL:(NSURL * _Nonnull)url sourceApplication:(NSString * _Nullable)sourceApplication annotation:(id _Nonnull)annotation SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_PROTOCOL("_TtP11NetaloUISDK10NetaloUser_")
+@protocol NetaloUser
+@property (nonatomic, readonly) int64_t id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull phoneNumber;
+@property (nonatomic, readonly, copy) NSString * _Nonnull email;
+@property (nonatomic, readonly, copy) NSString * _Nonnull fullName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull avatarUrl;
+@property (nonatomic, readonly, copy) NSString * _Nonnull session;
 @end
 
 
@@ -1056,6 +1097,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _N
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull ttgDefaultShadow;)
 + (UIColor * _Nonnull)ttgDefaultShadow SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 
