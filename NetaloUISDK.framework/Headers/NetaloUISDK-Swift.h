@@ -591,13 +591,6 @@ SWIFT_CLASS("_TtC11NetaloUISDK27MediaLibraryVideoController")
 
 
 
-SWIFT_CLASS("_TtC11NetaloUISDK23NTAttachmentsDownloader")
-@interface NTAttachmentsDownloader : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
 SWIFT_CLASS("_TtC11NetaloUISDK15NTDropDownAlert")
 @interface NTDropDownAlert : UIView
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -614,10 +607,11 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)userDidLogout;
 - (void)presentWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)pushWithViewController:(UIViewController * _Nonnull)viewController;
+- (void)popTo:(UIViewController * _Nonnull)viewController;
 - (void)openContact;
 - (void)switchToMainScreen;
 - (UIViewController * _Nullable)topMostViewController SWIFT_WARN_UNUSED_RESULT;
-- (UIViewController * _Nullable)getContactViewController SWIFT_WARN_UNUSED_RESULT;
+- (UIViewController * _Nullable)getConversationViewController SWIFT_WARN_UNUSED_RESULT;
 - (void)updateStatusBarWithStyle:(UIStatusBarStyle)style;
 - (void)updateThemeColor:(NSInteger)themeColor;
 @end
@@ -642,6 +636,8 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment;
+- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession;
 @end
 
 @class UNUserNotificationCenter;
@@ -652,7 +648,6 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 @end
-
 
 @class UIApplication;
 @class NSUserActivity;
@@ -670,6 +665,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (BOOL)application:(UIApplication * _Nonnull)app openURL:(NSURL * _Nonnull)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)application:(UIApplication * _Nonnull)application openURL:(NSURL * _Nonnull)url sourceApplication:(NSString * _Nullable)sourceApplication annotation:(id _Nonnull)annotation SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 SWIFT_PROTOCOL("_TtP11NetaloUISDK10NetaloUser_")
@@ -762,6 +758,13 @@ SWIFT_CLASS("_TtC11NetaloUISDK19RMDraftConversation")
 
 SWIFT_CLASS("_TtC11NetaloUISDK6RMFile")
 @interface RMFile : RealmSwiftObject
++ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC11NetaloUISDK13RMLinkPreview")
+@interface RMLinkPreview : RealmSwiftObject
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -1091,6 +1094,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK16TTGSnackbarLabel")
 
 
 
+
 @interface UIColor (SWIFT_EXTENSION(NetaloUISDK))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull ttgDefaultText;)
 + (UIColor * _Nonnull)ttgDefaultText SWIFT_WARN_UNUSED_RESULT;
@@ -1099,6 +1103,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _N
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull ttgDefaultShadow;)
 + (UIColor * _Nonnull)ttgDefaultShadow SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 
@@ -1740,13 +1745,6 @@ SWIFT_CLASS("_TtC11NetaloUISDK27MediaLibraryVideoController")
 
 
 
-SWIFT_CLASS("_TtC11NetaloUISDK23NTAttachmentsDownloader")
-@interface NTAttachmentsDownloader : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
 SWIFT_CLASS("_TtC11NetaloUISDK15NTDropDownAlert")
 @interface NTDropDownAlert : UIView
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -1763,10 +1761,11 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)userDidLogout;
 - (void)presentWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)pushWithViewController:(UIViewController * _Nonnull)viewController;
+- (void)popTo:(UIViewController * _Nonnull)viewController;
 - (void)openContact;
 - (void)switchToMainScreen;
 - (UIViewController * _Nullable)topMostViewController SWIFT_WARN_UNUSED_RESULT;
-- (UIViewController * _Nullable)getContactViewController SWIFT_WARN_UNUSED_RESULT;
+- (UIViewController * _Nullable)getConversationViewController SWIFT_WARN_UNUSED_RESULT;
 - (void)updateStatusBarWithStyle:(UIStatusBarStyle)style;
 - (void)updateThemeColor:(NSInteger)themeColor;
 @end
@@ -1791,6 +1790,8 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment;
+- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession;
 @end
 
 @class UNUserNotificationCenter;
@@ -1801,7 +1802,6 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 @end
-
 
 @class UIApplication;
 @class NSUserActivity;
@@ -1819,6 +1819,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (BOOL)application:(UIApplication * _Nonnull)app openURL:(NSURL * _Nonnull)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)application:(UIApplication * _Nonnull)application openURL:(NSURL * _Nonnull)url sourceApplication:(NSString * _Nullable)sourceApplication annotation:(id _Nonnull)annotation SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 SWIFT_PROTOCOL("_TtP11NetaloUISDK10NetaloUser_")
@@ -1911,6 +1912,13 @@ SWIFT_CLASS("_TtC11NetaloUISDK19RMDraftConversation")
 
 SWIFT_CLASS("_TtC11NetaloUISDK6RMFile")
 @interface RMFile : RealmSwiftObject
++ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC11NetaloUISDK13RMLinkPreview")
+@interface RMLinkPreview : RealmSwiftObject
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -2240,6 +2248,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK16TTGSnackbarLabel")
 
 
 
+
 @interface UIColor (SWIFT_EXTENSION(NetaloUISDK))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull ttgDefaultText;)
 + (UIColor * _Nonnull)ttgDefaultText SWIFT_WARN_UNUSED_RESULT;
@@ -2248,6 +2257,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _N
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull ttgDefaultShadow;)
 + (UIColor * _Nonnull)ttgDefaultShadow SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 
