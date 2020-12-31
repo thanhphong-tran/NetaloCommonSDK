@@ -959,7 +959,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 /// Icon image
 @property (nonatomic, strong) UIImage * _Nullable icon;
 /// Icon image content
-@property (nonatomic) enum UIViewContentMode iconContentMode;
+@property (nonatomic) UIViewContentMode iconContentMode;
 /// Icon background color. Default is clear.
 @property (nonatomic, strong) UIColor * _Nullable iconBackgroundColor;
 /// Icon tint color
@@ -975,7 +975,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 /// ActivityIndicatorView
 @property (nonatomic, readonly, strong) UIActivityIndicatorView * _Null_unspecified activityIndicatorView;
 /// ActivityIndicatorViewStyle
-@property (nonatomic) enum UIActivityIndicatorViewStyle activityIndicatorViewStyle;
+@property (nonatomic) UIActivityIndicatorViewStyle activityIndicatorViewStyle;
 /// ActivityIndicatorView color
 @property (nonatomic, strong) UIColor * _Nonnull activityIndicatorViewColor;
 /// Animation SpringWithDamping. Default is 0.7
@@ -2113,7 +2113,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 /// Icon image
 @property (nonatomic, strong) UIImage * _Nullable icon;
 /// Icon image content
-@property (nonatomic) enum UIViewContentMode iconContentMode;
+@property (nonatomic) UIViewContentMode iconContentMode;
 /// Icon background color. Default is clear.
 @property (nonatomic, strong) UIColor * _Nullable iconBackgroundColor;
 /// Icon tint color
@@ -2129,7 +2129,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 /// ActivityIndicatorView
 @property (nonatomic, readonly, strong) UIActivityIndicatorView * _Null_unspecified activityIndicatorView;
 /// ActivityIndicatorViewStyle
-@property (nonatomic) enum UIActivityIndicatorViewStyle activityIndicatorViewStyle;
+@property (nonatomic) UIActivityIndicatorViewStyle activityIndicatorViewStyle;
 /// ActivityIndicatorView color
 @property (nonatomic, strong) UIColor * _Nonnull activityIndicatorViewColor;
 /// Animation SpringWithDamping. Default is 0.7
