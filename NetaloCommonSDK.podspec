@@ -64,11 +64,11 @@ Pod::Spec.new do |spec|
 
   # spec.platform     = :ios
     spec.platform     = :ios, "10.0"
-    
+
       spec.pod_target_xcconfig = {
         "SWIFT_VERSION" => "4.2",
       }
-      
+
     spec.swift_version = '4.2'
 
   #  When using multiple platforms
@@ -138,5 +138,5 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
-    spec.ios.vendored_frameworks = "NetaloUISDK.framework", "NetaloCallSDK.framework", "NetaloSDK.framework"
+    spec.ios.vendored_frameworks = "Realm.framework", "RealmSwift.framework"
 end
