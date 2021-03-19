@@ -265,16 +265,6 @@ SWIFT_CLASS("_TtC11NetaloUISDK20BasicAudioController")
 @end
 
 
-SWIFT_CLASS("_TtC11NetaloUISDK20BasicVideoController")
-@interface BasicVideoController : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-@end
-
-
-@interface BasicVideoController (SWIFT_EXTENSION(NetaloUISDK)) <AVPlayerViewControllerDelegate>
-@end
-
 
 
 @class NSCoder;
@@ -349,12 +339,14 @@ SWIFT_CLASS("_TtC11NetaloUISDK15ChatContainerVC")
 
 
 
+
 @class UIDocumentPickerViewController;
 
 @interface ChatContainerVC (SWIFT_EXTENSION(NetaloUISDK)) <UIDocumentPickerDelegate>
 - (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentsAtURLs:(NSArray<NSURL *> * _Nonnull)urls;
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController * _Nonnull)controller;
 @end
+
 
 
 
@@ -392,6 +384,17 @@ SWIFT_CLASS("_TtC11NetaloUISDK12ChatTextView")
 - (void)textViewDidChange:(UITextView * _Nonnull)textView;
 - (void)textViewDidChangeSelection:(UITextView * _Nonnull)textView;
 - (BOOL)textView:(UITextView * _Nonnull)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString * _Nonnull)text SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC11NetaloUISDK19ChatVideoController")
+@interface ChatVideoController : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+@interface ChatVideoController (SWIFT_EXTENSION(NetaloUISDK)) <AVPlayerViewControllerDelegate>
 @end
 
 
@@ -476,6 +479,14 @@ SWIFT_CLASS("_TtC11NetaloUISDK22CustomAudioMessageCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
+SWIFT_CLASS("_TtC11NetaloUISDK25CustomLocationMessageCell")
+@interface CustomLocationMessageCell : MessageContentCell
+- (void)prepareForReuse;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 SWIFT_CLASS("_TtC11NetaloUISDK24CustomMessagesFlowLayout")
@@ -564,6 +575,67 @@ SWIFT_CLASS("_TtC11NetaloUISDK14IncomingCallVC")
 
 
 
+IB_DESIGNABLE
+SWIFT_CLASS("_TtC11NetaloUISDK15KCCircularTimer")
+@interface KCCircularTimer : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+/// The current value of the timer.
+@property (nonatomic) IBInspectable double currentValue;
+/// The maximum value of the timer.  Along with the current value, it
+/// is used to determine how much of the circle is filled.
+@property (nonatomic) IBInspectable double maximumValue;
+/// The percent of the size of the view to use
+/// as the width of the line of the progress arc.
+@property (nonatomic) IBInspectable CGFloat borderFactor;
+/// The percent of the size of the view to use
+/// as the width of the line of the circle in the
+/// background.
+@property (nonatomic) IBInspectable CGFloat circleFactor;
+/// The percent of the size of the view used to determine the
+/// distance the circle is inset from its edge.
+@property (nonatomic) IBInspectable CGFloat insetFactor;
+/// The color of the progress arc.  Setting this property overrides
+/// any previous color set via the tintColor property.
+@property (nonatomic, strong) IBInspectable UIColor * _Nonnull progressColor;
+/// The color of the background circle.  This property allows setting
+/// explicit color not based on the tintColor.
+@property (nonatomic, strong) IBInspectable UIColor * _Nonnull circleColor;
+/// The alpha of the background circle.  Only used when setting the
+/// color via the tintColor.  The tintColor and this alpha are used
+/// to set the color of the background circle.  If you need finer
+/// control, set the circleColor directly.
+@property (nonatomic) IBInspectable CGFloat circleAlpha;
+/// The name of the font to use for the numeric timer in the center
+/// of the circle.  If set and the font name is valid, it overrides
+/// the default which is the system font.
+@property (nonatomic, copy) IBInspectable NSString * _Nullable fontName;
+/// The font size of the numeric timer in the center of the circle.
+/// The default is 0 which results in a font size used based on the
+/// inner dimensions of the circle.
+@property (nonatomic) IBInspectable CGFloat fontSize;
+/// Does the timer move clockwise or counter-clockwise.
+@property (nonatomic) IBInspectable BOOL clockwise;
+/// Determines if the numeric timer should be shown.
+@property (nonatomic) IBInspectable BOOL showNumber;
+/// The number of decimal places to display for the value.
+/// Valid values are 0, 1, and 2.
+@property (nonatomic) IBInspectable NSInteger decimalPlaces;
+- (void)didMoveToWindow;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) Class _Nonnull layerClass;)
++ (Class _Nonnull)layerClass SWIFT_WARN_UNUSED_RESULT;
+- (void)tintColorDidChange;
+@end
+
+
+SWIFT_CLASS("_TtC11NetaloUISDK23LiveLocationMessageCell")
+@interface LiveLocationMessageCell : MessageContentCell
+- (void)prepareForReuse;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 SWIFT_CLASS("_TtC11NetaloUISDK15MediaDetailCell")
 @interface MediaDetailCell : CollectionViewCell
@@ -624,6 +696,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (void)setTheme:(NSInteger)themeType;
 + (id <NetaloUser> _Nullable)authorizedUser SWIFT_WARN_UNUSED_RESULT;
 - (void)addWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
+- (void)removeWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
 - (UIViewController * _Nonnull)buildConversationViewController SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildHistoryCallViewController SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildContactViewController SWIFT_WARN_UNUSED_RESULT;
@@ -636,9 +709,9 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
-- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment;
-- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession;
+- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
 @end
 
 @class UNUserNotificationCenter;
@@ -719,101 +792,8 @@ SWIFT_CLASS("_TtC11NetaloUISDK13QBCallManager")
 
 
 
-SWIFT_CLASS("_TtC11NetaloUISDK7RMAudio")
-@interface RMAudio : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK13RMCallHistory")
-@interface RMCallHistory : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK9RMContact")
-@interface RMContact : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK14RMConversation")
-@interface RMConversation : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK19RMDraftConversation")
-@interface RMDraftConversation : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK6RMFile")
-@interface RMFile : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK13RMLinkPreview")
-@interface RMLinkPreview : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK14RMLocalContact")
-@interface RMLocalContact : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK9RMMessage")
-@interface RMMessage : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK20RMRecentSearchResult")
-@interface RMRecentSearchResult : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK6RMUser")
-@interface RMUser : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK12RMUserStatus")
-@interface RMUserStatus : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK7RMVideo")
-@interface RMVideo : RealmSwiftObject
+SWIFT_CLASS("_TtC11NetaloUISDK16RMChatBackground")
+@interface RMChatBackground : RealmSwiftObject
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -1005,18 +985,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 
 
 
+
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Show the snackbar.
 - (void)show;
 @end
 
 
-
-
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Dismiss the snackbar manually.
 - (void)dismiss;
 @end
+
 
 /// Snackbar animation types.
 /// <ul>
@@ -1096,6 +1076,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK16TTGSnackbarLabel")
 
 
 
+
 @interface UIColor (SWIFT_EXTENSION(NetaloUISDK))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull ttgDefaultText;)
 + (UIColor * _Nonnull)ttgDefaultText SWIFT_WARN_UNUSED_RESULT;
@@ -1104,6 +1085,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _N
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull ttgDefaultShadow;)
 + (UIColor * _Nonnull)ttgDefaultShadow SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 
@@ -1420,16 +1403,6 @@ SWIFT_CLASS("_TtC11NetaloUISDK20BasicAudioController")
 @end
 
 
-SWIFT_CLASS("_TtC11NetaloUISDK20BasicVideoController")
-@interface BasicVideoController : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-@end
-
-
-@interface BasicVideoController (SWIFT_EXTENSION(NetaloUISDK)) <AVPlayerViewControllerDelegate>
-@end
-
 
 
 @class NSCoder;
@@ -1504,12 +1477,14 @@ SWIFT_CLASS("_TtC11NetaloUISDK15ChatContainerVC")
 
 
 
+
 @class UIDocumentPickerViewController;
 
 @interface ChatContainerVC (SWIFT_EXTENSION(NetaloUISDK)) <UIDocumentPickerDelegate>
 - (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentsAtURLs:(NSArray<NSURL *> * _Nonnull)urls;
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController * _Nonnull)controller;
 @end
+
 
 
 
@@ -1547,6 +1522,17 @@ SWIFT_CLASS("_TtC11NetaloUISDK12ChatTextView")
 - (void)textViewDidChange:(UITextView * _Nonnull)textView;
 - (void)textViewDidChangeSelection:(UITextView * _Nonnull)textView;
 - (BOOL)textView:(UITextView * _Nonnull)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString * _Nonnull)text SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC11NetaloUISDK19ChatVideoController")
+@interface ChatVideoController : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+@interface ChatVideoController (SWIFT_EXTENSION(NetaloUISDK)) <AVPlayerViewControllerDelegate>
 @end
 
 
@@ -1631,6 +1617,14 @@ SWIFT_CLASS("_TtC11NetaloUISDK22CustomAudioMessageCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
+SWIFT_CLASS("_TtC11NetaloUISDK25CustomLocationMessageCell")
+@interface CustomLocationMessageCell : MessageContentCell
+- (void)prepareForReuse;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 SWIFT_CLASS("_TtC11NetaloUISDK24CustomMessagesFlowLayout")
@@ -1719,6 +1713,67 @@ SWIFT_CLASS("_TtC11NetaloUISDK14IncomingCallVC")
 
 
 
+IB_DESIGNABLE
+SWIFT_CLASS("_TtC11NetaloUISDK15KCCircularTimer")
+@interface KCCircularTimer : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+/// The current value of the timer.
+@property (nonatomic) IBInspectable double currentValue;
+/// The maximum value of the timer.  Along with the current value, it
+/// is used to determine how much of the circle is filled.
+@property (nonatomic) IBInspectable double maximumValue;
+/// The percent of the size of the view to use
+/// as the width of the line of the progress arc.
+@property (nonatomic) IBInspectable CGFloat borderFactor;
+/// The percent of the size of the view to use
+/// as the width of the line of the circle in the
+/// background.
+@property (nonatomic) IBInspectable CGFloat circleFactor;
+/// The percent of the size of the view used to determine the
+/// distance the circle is inset from its edge.
+@property (nonatomic) IBInspectable CGFloat insetFactor;
+/// The color of the progress arc.  Setting this property overrides
+/// any previous color set via the tintColor property.
+@property (nonatomic, strong) IBInspectable UIColor * _Nonnull progressColor;
+/// The color of the background circle.  This property allows setting
+/// explicit color not based on the tintColor.
+@property (nonatomic, strong) IBInspectable UIColor * _Nonnull circleColor;
+/// The alpha of the background circle.  Only used when setting the
+/// color via the tintColor.  The tintColor and this alpha are used
+/// to set the color of the background circle.  If you need finer
+/// control, set the circleColor directly.
+@property (nonatomic) IBInspectable CGFloat circleAlpha;
+/// The name of the font to use for the numeric timer in the center
+/// of the circle.  If set and the font name is valid, it overrides
+/// the default which is the system font.
+@property (nonatomic, copy) IBInspectable NSString * _Nullable fontName;
+/// The font size of the numeric timer in the center of the circle.
+/// The default is 0 which results in a font size used based on the
+/// inner dimensions of the circle.
+@property (nonatomic) IBInspectable CGFloat fontSize;
+/// Does the timer move clockwise or counter-clockwise.
+@property (nonatomic) IBInspectable BOOL clockwise;
+/// Determines if the numeric timer should be shown.
+@property (nonatomic) IBInspectable BOOL showNumber;
+/// The number of decimal places to display for the value.
+/// Valid values are 0, 1, and 2.
+@property (nonatomic) IBInspectable NSInteger decimalPlaces;
+- (void)didMoveToWindow;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) Class _Nonnull layerClass;)
++ (Class _Nonnull)layerClass SWIFT_WARN_UNUSED_RESULT;
+- (void)tintColorDidChange;
+@end
+
+
+SWIFT_CLASS("_TtC11NetaloUISDK23LiveLocationMessageCell")
+@interface LiveLocationMessageCell : MessageContentCell
+- (void)prepareForReuse;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 SWIFT_CLASS("_TtC11NetaloUISDK15MediaDetailCell")
 @interface MediaDetailCell : CollectionViewCell
@@ -1779,6 +1834,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (void)setTheme:(NSInteger)themeType;
 + (id <NetaloUser> _Nullable)authorizedUser SWIFT_WARN_UNUSED_RESULT;
 - (void)addWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
+- (void)removeWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
 - (UIViewController * _Nonnull)buildConversationViewController SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildHistoryCallViewController SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildContactViewController SWIFT_WARN_UNUSED_RESULT;
@@ -1791,9 +1847,9 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
-- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment;
-- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession;
+- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
 @end
 
 @class UNUserNotificationCenter;
@@ -1874,101 +1930,8 @@ SWIFT_CLASS("_TtC11NetaloUISDK13QBCallManager")
 
 
 
-SWIFT_CLASS("_TtC11NetaloUISDK7RMAudio")
-@interface RMAudio : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK13RMCallHistory")
-@interface RMCallHistory : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK9RMContact")
-@interface RMContact : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK14RMConversation")
-@interface RMConversation : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK19RMDraftConversation")
-@interface RMDraftConversation : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK6RMFile")
-@interface RMFile : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK13RMLinkPreview")
-@interface RMLinkPreview : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK14RMLocalContact")
-@interface RMLocalContact : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK9RMMessage")
-@interface RMMessage : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK20RMRecentSearchResult")
-@interface RMRecentSearchResult : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK6RMUser")
-@interface RMUser : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK12RMUserStatus")
-@interface RMUserStatus : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11NetaloUISDK7RMVideo")
-@interface RMVideo : RealmSwiftObject
+SWIFT_CLASS("_TtC11NetaloUISDK16RMChatBackground")
+@interface RMChatBackground : RealmSwiftObject
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -2160,18 +2123,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 
 
 
+
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Show the snackbar.
 - (void)show;
 @end
 
 
-
-
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Dismiss the snackbar manually.
 - (void)dismiss;
 @end
+
 
 /// Snackbar animation types.
 /// <ul>
@@ -2251,6 +2214,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK16TTGSnackbarLabel")
 
 
 
+
 @interface UIColor (SWIFT_EXTENSION(NetaloUISDK))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull ttgDefaultText;)
 + (UIColor * _Nonnull)ttgDefaultText SWIFT_WARN_UNUSED_RESULT;
@@ -2259,6 +2223,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _N
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull ttgDefaultShadow;)
 + (UIColor * _Nonnull)ttgDefaultShadow SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 
