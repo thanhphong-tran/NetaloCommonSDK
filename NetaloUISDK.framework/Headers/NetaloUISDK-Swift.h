@@ -341,13 +341,14 @@ SWIFT_CLASS("_TtC11NetaloUISDK15ChatContainerVC")
 
 
 
+
+
 @class UIDocumentPickerViewController;
 
 @interface ChatContainerVC (SWIFT_EXTENSION(NetaloUISDK)) <UIDocumentPickerDelegate>
 - (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentsAtURLs:(NSArray<NSURL *> * _Nonnull)urls;
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController * _Nonnull)controller;
 @end
-
 
 
 
@@ -683,15 +684,16 @@ SWIFT_CLASS("_TtC11NetaloUISDK18MultiImagePickerVC")
 
 
 
-@interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSource>
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 @interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSourcePrefetching>
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView cancelPrefetchingForItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
+
+
+@interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -762,8 +764,8 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
-- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber imageUrlClientSide:(NSString * _Nonnull)imageUrlClientSide;
-- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment imageUrlClientSide:(NSString * _Nonnull)imageUrlClientSide;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber userProfileUrl:(NSString * _Nonnull)userProfileUrl;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userProfileUrl:(NSString * _Nonnull)userProfileUrl;
 - (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
 @end
 
@@ -1039,11 +1041,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 
 
 
-
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Show the snackbar.
 - (void)show;
 @end
+
 
 
 
@@ -1533,13 +1535,14 @@ SWIFT_CLASS("_TtC11NetaloUISDK15ChatContainerVC")
 
 
 
+
+
 @class UIDocumentPickerViewController;
 
 @interface ChatContainerVC (SWIFT_EXTENSION(NetaloUISDK)) <UIDocumentPickerDelegate>
 - (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentsAtURLs:(NSArray<NSURL *> * _Nonnull)urls;
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController * _Nonnull)controller;
 @end
-
 
 
 
@@ -1875,15 +1878,16 @@ SWIFT_CLASS("_TtC11NetaloUISDK18MultiImagePickerVC")
 
 
 
-@interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSource>
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 @interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSourcePrefetching>
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView cancelPrefetchingForItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
+
+
+@interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -1954,8 +1958,8 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
-- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber imageUrlClientSide:(NSString * _Nonnull)imageUrlClientSide;
-- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment imageUrlClientSide:(NSString * _Nonnull)imageUrlClientSide;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber userProfileUrl:(NSString * _Nonnull)userProfileUrl;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userProfileUrl:(NSString * _Nonnull)userProfileUrl;
 - (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
 @end
 
@@ -2231,11 +2235,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 
 
 
-
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Show the snackbar.
 - (void)show;
 @end
+
 
 
 
