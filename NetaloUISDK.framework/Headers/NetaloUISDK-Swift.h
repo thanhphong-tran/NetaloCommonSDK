@@ -684,7 +684,6 @@ SWIFT_CLASS("_TtC11NetaloUISDK18MultiImagePickerVC")
 
 
 
-
 @interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSourcePrefetching>
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView cancelPrefetchingForItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
@@ -695,6 +694,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK18MultiImagePickerVC")
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 
@@ -742,6 +742,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (UIViewController * _Nullable)getConversationViewController SWIFT_WARN_UNUSED_RESULT;
 - (void)updateStatusBarWithStyle:(UIStatusBarStyle)style;
 - (void)updateThemeColor:(NSInteger)themeColor;
+- (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
 @end
 
 @protocol NetaloUser;
@@ -762,6 +763,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
+
 
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
@@ -1042,11 +1044,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 
 
 
+
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Show the snackbar.
 - (void)show;
 @end
-
 
 
 
@@ -1879,7 +1881,6 @@ SWIFT_CLASS("_TtC11NetaloUISDK18MultiImagePickerVC")
 
 
 
-
 @interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSourcePrefetching>
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView cancelPrefetchingForItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
@@ -1890,6 +1891,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK18MultiImagePickerVC")
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 
@@ -1937,6 +1939,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (UIViewController * _Nullable)getConversationViewController SWIFT_WARN_UNUSED_RESULT;
 - (void)updateStatusBarWithStyle:(UIStatusBarStyle)style;
 - (void)updateThemeColor:(NSInteger)themeColor;
+- (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
 @end
 
 @protocol NetaloUser;
@@ -1957,6 +1960,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
+
 
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
@@ -2237,11 +2241,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 
 
 
+
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Show the snackbar.
 - (void)show;
 @end
-
 
 
 
