@@ -769,7 +769,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment;
-- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
+- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber canCreateGroup:(BOOL)canCreateGroup;
 @end
 
 @class UNUserNotificationCenter;
@@ -808,6 +808,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK10NetaloUser_")
 @property (nonatomic, readonly, copy) NSString * _Nonnull fullName;
 @property (nonatomic, readonly, copy) NSString * _Nonnull avatarUrl;
 @property (nonatomic, readonly, copy) NSString * _Nonnull session;
+@property (nonatomic, readonly) BOOL canCreateGroup;
 @end
 
 
@@ -1966,7 +1967,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment;
-- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
+- (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber canCreateGroup:(BOOL)canCreateGroup;
 @end
 
 @class UNUserNotificationCenter;
@@ -2005,6 +2006,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK10NetaloUser_")
 @property (nonatomic, readonly, copy) NSString * _Nonnull fullName;
 @property (nonatomic, readonly, copy) NSString * _Nonnull avatarUrl;
 @property (nonatomic, readonly, copy) NSString * _Nonnull session;
+@property (nonatomic, readonly) BOOL canCreateGroup;
 @end
 
 
