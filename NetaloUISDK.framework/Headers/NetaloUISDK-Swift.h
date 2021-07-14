@@ -760,6 +760,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (UIViewController * _Nonnull)buildChatViewController:(id <NetaloUser> _Nonnull)netaloUser type:(NSInteger)type SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nullable)buildChatViewControllerWithPhoneNumber:(NSString * _Nonnull)phoneNumber SWIFT_WARN_UNUSED_RESULT;
 - (void)setWithUser:(id <NetaloUser> _Nonnull)user;
+- (void)logout;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -1958,6 +1959,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (UIViewController * _Nonnull)buildChatViewController:(id <NetaloUser> _Nonnull)netaloUser type:(NSInteger)type SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nullable)buildChatViewControllerWithPhoneNumber:(NSString * _Nonnull)phoneNumber SWIFT_WARN_UNUSED_RESULT;
 - (void)setWithUser:(id <NetaloUser> _Nonnull)user;
+- (void)logout;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
