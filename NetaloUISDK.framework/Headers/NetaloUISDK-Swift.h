@@ -743,6 +743,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)updateStatusBarWithStyle:(UIStatusBarStyle)style;
 - (void)updateThemeColor:(NSInteger)themeColor;
 - (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
+- (void)didPressedWithUrl:(NSString * _Nonnull)url;
 @end
 
 @protocol NetaloUser;
@@ -1942,6 +1943,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)updateStatusBarWithStyle:(UIStatusBarStyle)style;
 - (void)updateThemeColor:(NSInteger)themeColor;
 - (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
+- (void)didPressedWithUrl:(NSString * _Nonnull)url;
 @end
 
 @protocol NetaloUser;
