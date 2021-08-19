@@ -744,6 +744,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)updateThemeColor:(NSInteger)themeColor;
 - (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
 - (void)didPressedWithUrl:(NSString * _Nonnull)url;
+- (void)didClose;
 @end
 
 @protocol NetaloUser;
@@ -754,7 +755,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 + (id <NetaloUser> _Nullable)authorizedUser SWIFT_WARN_UNUSED_RESULT;
 - (void)addWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
 - (void)removeWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
-- (UIViewController * _Nonnull)buildConversationViewController SWIFT_WARN_UNUSED_RESULT;
+- (UIViewController * _Nonnull)buildConversationViewControllerWithCanCreateGroup:(BOOL)canCreateGroup filterGroupTypes:(NSArray<NSNumber *> * _Nonnull)filterGroupTypes SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildHistoryCallViewController SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildContactViewController SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildProfileViewController SWIFT_WARN_UNUSED_RESULT;
@@ -1944,6 +1945,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)updateThemeColor:(NSInteger)themeColor;
 - (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
 - (void)didPressedWithUrl:(NSString * _Nonnull)url;
+- (void)didClose;
 @end
 
 @protocol NetaloUser;
@@ -1954,7 +1956,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 + (id <NetaloUser> _Nullable)authorizedUser SWIFT_WARN_UNUSED_RESULT;
 - (void)addWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
 - (void)removeWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
-- (UIViewController * _Nonnull)buildConversationViewController SWIFT_WARN_UNUSED_RESULT;
+- (UIViewController * _Nonnull)buildConversationViewControllerWithCanCreateGroup:(BOOL)canCreateGroup filterGroupTypes:(NSArray<NSNumber *> * _Nonnull)filterGroupTypes SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildHistoryCallViewController SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildContactViewController SWIFT_WARN_UNUSED_RESULT;
 - (UIViewController * _Nonnull)buildProfileViewController SWIFT_WARN_UNUSED_RESULT;
