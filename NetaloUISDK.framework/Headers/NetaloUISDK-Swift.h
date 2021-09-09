@@ -745,6 +745,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
 - (void)didPressedWithUrl:(NSString * _Nonnull)url;
 - (void)didClose;
+- (void)didUpdateWithBages:(NSInteger)bages;
 @end
 
 @protocol NetaloUser;
@@ -1946,6 +1947,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
 - (void)didPressedWithUrl:(NSString * _Nonnull)url;
 - (void)didClose;
+- (void)didUpdateWithBages:(NSInteger)bages;
 @end
 
 @protocol NetaloUser;
