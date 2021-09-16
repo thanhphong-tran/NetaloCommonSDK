@@ -754,6 +754,8 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 @interface NetaloUISDK : NSObject
 - (void)setTheme:(NSInteger)themeType;
+- (void)setUserProfileUrl:(NSString * _Nonnull)path;
+- (NSString * _Nonnull)getUserProfileUrl SWIFT_WARN_UNUSED_RESULT;
 + (id <NetaloUser> _Nullable)authorizedUser SWIFT_WARN_UNUSED_RESULT;
 - (void)addWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
 - (void)removeWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
@@ -765,6 +767,12 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (UIViewController * _Nullable)buildChatViewControllerWithPhoneNumber:(NSString * _Nonnull)phoneNumber SWIFT_WARN_UNUSED_RESULT;
 - (void)setWithUser:(id <NetaloUser> _Nonnull)user;
 - (void)logout;
+- (void)blockWithUseId:(NSString * _Nonnull)useId completion:(void (^ _Nullable)(BOOL))completion;
+- (void)unBlockWithUseId:(NSString * _Nonnull)useId completion:(void (^ _Nullable)(BOOL))completion;
+- (void)sendMessageWithText:(NSString * _Nonnull)text to:(NSString * _Nonnull)userId completion:(void (^ _Nullable)(BOOL))completion;
+- (void)exit;
+- (void)checkChattedWith:(NSString * _Nonnull)userId completion:(void (^ _Nullable)(BOOL))completion;
+- (void)getNumbersOfBagesWithCompletion:(void (^ _Nullable)(NSInteger))completion;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -1957,6 +1965,8 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 @interface NetaloUISDK : NSObject
 - (void)setTheme:(NSInteger)themeType;
+- (void)setUserProfileUrl:(NSString * _Nonnull)path;
+- (NSString * _Nonnull)getUserProfileUrl SWIFT_WARN_UNUSED_RESULT;
 + (id <NetaloUser> _Nullable)authorizedUser SWIFT_WARN_UNUSED_RESULT;
 - (void)addWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
 - (void)removeWithDelegate:(id <NetaloUIDelegate> _Nonnull)delegate;
@@ -1968,6 +1978,12 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 - (UIViewController * _Nullable)buildChatViewControllerWithPhoneNumber:(NSString * _Nonnull)phoneNumber SWIFT_WARN_UNUSED_RESULT;
 - (void)setWithUser:(id <NetaloUser> _Nonnull)user;
 - (void)logout;
+- (void)blockWithUseId:(NSString * _Nonnull)useId completion:(void (^ _Nullable)(BOOL))completion;
+- (void)unBlockWithUseId:(NSString * _Nonnull)useId completion:(void (^ _Nullable)(BOOL))completion;
+- (void)sendMessageWithText:(NSString * _Nonnull)text to:(NSString * _Nonnull)userId completion:(void (^ _Nullable)(BOOL))completion;
+- (void)exit;
+- (void)checkChattedWith:(NSString * _Nonnull)userId completion:(void (^ _Nullable)(BOOL))completion;
+- (void)getNumbersOfBagesWithCompletion:(void (^ _Nullable)(NSInteger))completion;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
