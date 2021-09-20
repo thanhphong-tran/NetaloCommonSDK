@@ -690,12 +690,12 @@ SWIFT_CLASS("_TtC11NetaloUISDK18MultiImagePickerVC")
 @end
 
 
+
+
 @interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 
 @interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDelegate>
@@ -728,6 +728,11 @@ SWIFT_CLASS("_TtC11NetaloUISDK15NTDropDownAlert")
 
 
 
+typedef SWIFT_ENUM(NSInteger, NetaloEventType, closed) {
+  NetaloEventTypeAudioCall = 0,
+  NetaloEventTypeVideoCall = 1,
+};
+
 
 SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 @protocol NetaloUIDelegate
@@ -736,10 +741,14 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)presentWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)pushWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)popTo:(UIViewController * _Nonnull)viewController;
+@optional
 - (void)openContact;
 - (void)switchToMainScreen;
+@required
 - (UIViewController * _Nullable)topMostViewController SWIFT_WARN_UNUSED_RESULT;
+@optional
 - (UIViewController * _Nullable)getConversationViewController SWIFT_WARN_UNUSED_RESULT;
+@required
 - (void)updateStatusBarWithStyle:(UIStatusBarStyle)style;
 - (void)updateThemeColor:(NSInteger)themeColor;
 - (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
@@ -747,6 +756,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)didPressedWithUrl:(NSString * _Nonnull)url;
 - (void)didClose;
 - (void)didUpdateWithBages:(NSInteger)bages;
+- (void)didTriggerWithEvent:(enum NetaloEventType)event;
 @end
 
 @protocol NetaloUser;
@@ -1065,11 +1075,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 @end
 
 
-
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Dismiss the snackbar manually.
 - (void)dismiss;
 @end
+
 
 /// Snackbar animation types.
 /// <ul>
@@ -1901,12 +1911,12 @@ SWIFT_CLASS("_TtC11NetaloUISDK18MultiImagePickerVC")
 @end
 
 
+
+
 @interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 
 @interface MultiImagePickerVC (SWIFT_EXTENSION(NetaloUISDK)) <UICollectionViewDelegate>
@@ -1939,6 +1949,11 @@ SWIFT_CLASS("_TtC11NetaloUISDK15NTDropDownAlert")
 
 
 
+typedef SWIFT_ENUM(NSInteger, NetaloEventType, closed) {
+  NetaloEventTypeAudioCall = 0,
+  NetaloEventTypeVideoCall = 1,
+};
+
 
 SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 @protocol NetaloUIDelegate
@@ -1947,10 +1962,14 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)presentWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)pushWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)popTo:(UIViewController * _Nonnull)viewController;
+@optional
 - (void)openContact;
 - (void)switchToMainScreen;
+@required
 - (UIViewController * _Nullable)topMostViewController SWIFT_WARN_UNUSED_RESULT;
+@optional
 - (UIViewController * _Nullable)getConversationViewController SWIFT_WARN_UNUSED_RESULT;
+@required
 - (void)updateStatusBarWithStyle:(UIStatusBarStyle)style;
 - (void)updateThemeColor:(NSInteger)themeColor;
 - (void)checkChatFunctionsWith:(NSString * _Nonnull)userId;
@@ -1958,6 +1977,7 @@ SWIFT_PROTOCOL("_TtP11NetaloUISDK16NetaloUIDelegate_")
 - (void)didPressedWithUrl:(NSString * _Nonnull)url;
 - (void)didClose;
 - (void)didUpdateWithBages:(NSInteger)bages;
+- (void)didTriggerWithEvent:(enum NetaloEventType)event;
 @end
 
 @protocol NetaloUser;
@@ -2276,11 +2296,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) CGFloat snackbarMinHeight;)
 @end
 
 
-
 @interface TTGSnackbar (SWIFT_EXTENSION(NetaloUISDK))
 /// Dismiss the snackbar manually.
 - (void)dismiss;
 @end
+
 
 /// Snackbar animation types.
 /// <ul>
