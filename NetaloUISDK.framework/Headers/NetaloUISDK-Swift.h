@@ -791,7 +791,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
-- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment forceUpdateProfile:(BOOL)forceUpdateProfile forceUpdateUserProfileUrl:(BOOL)forceUpdateUserProfileUrl allowAddContactInProfile:(BOOL)allowAddContactInProfile enableCallsButton:(BOOL)enableCallsButton enableUserStatusInChat:(BOOL)enableUserStatusInChat;
 - (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber canCreateGroup:(BOOL)canCreateGroup;
 @end
 
@@ -2012,7 +2012,7 @@ SWIFT_CLASS("_TtC11NetaloUISDK11NetaloUISDK")
 
 @interface NetaloUISDK (SWIFT_EXTENSION(NetaloUISDK))
 - (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment userId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber;
-- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment;
+- (nonnull instancetype)initWithAppId:(int64_t)appId appKey:(NSString * _Nonnull)appKey accountKey:(NSString * _Nonnull)accountKey appGroupIdentifier:(NSString * _Nonnull)appGroupIdentifier enviroment:(NSInteger)enviroment forceUpdateProfile:(BOOL)forceUpdateProfile forceUpdateUserProfileUrl:(BOOL)forceUpdateUserProfileUrl allowAddContactInProfile:(BOOL)allowAddContactInProfile enableCallsButton:(BOOL)enableCallsButton enableUserStatusInChat:(BOOL)enableUserStatusInChat;
 - (void)setUserWithUserId:(int64_t)userId fullName:(NSString * _Nonnull)fullName userSession:(NSString * _Nonnull)userSession avatarId:(NSString * _Nonnull)avatarId phoneNumber:(NSString * _Nonnull)phoneNumber canCreateGroup:(BOOL)canCreateGroup;
 @end
 
